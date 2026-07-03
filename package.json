@@ -1,0 +1,15 @@
+{
+  "name": "rentigo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RentiGo — Vehicle Rental Management System (React + Express + SQLite)",
+  "scripts": {
+    "setup": "npm --prefix server install && npm --prefix client install",
+    "dev": "concurrently -n server,client -c yellow,cyan \"npm --prefix server run dev\" \"npm --prefix client run dev\"",
+    "build": "npm --prefix client run build",
+    "start": "npm --prefix server start"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}

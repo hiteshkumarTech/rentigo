@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-night font-sans text-white antialiased;
+}
+
+/* Native controls should follow the dark theme. */
+input[type='date'] {
+  color-scheme: dark;
+}
+select.input option {
+  color: #002a35;
+  background: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0b1f26;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 218, 0, 0.4);
+}
+
+@layer components {
+  .input {
+    @apply w-full rounded-xl border border-white/10 bg-white/5 px-3.5 py-2.5 text-sm text-white placeholder-white/30 outline-none transition focus:border-brand/60 focus:ring-2 focus:ring-brand/20;
+  }
+  .label {
+    @apply mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.14em] text-white/40;
+  }
+  .btn-brand {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-brand px-5 py-2.5 text-sm font-bold text-ink transition hover:brightness-95 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-40;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-4 py-2 text-sm text-white/80 transition hover:bg-white/5 hover:text-white disabled:pointer-events-none disabled:opacity-40;
+  }
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-red-400/30 px-4 py-2 text-sm text-red-300 transition hover:bg-red-400/10 disabled:pointer-events-none disabled:opacity-40;
+  }
+  .card {
+    @apply rounded-2xl border border-white/10 bg-white/[0.04];
+  }
+  .th {
+    @apply px-4 py-3 text-left text-[11px] font-semibold uppercase tracking-[0.14em] text-white/40;
+  }
+  .td {
+    @apply px-4 py-3 text-sm text-white/80;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
