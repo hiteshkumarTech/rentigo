@@ -118,6 +118,7 @@ export default function Home() {
   const { user } = useAuth();
   const navigate = useNavigate();
   const [ready, setReady] = useState(false);
+  const [videoOk, setVideoOk] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   /* The spec gates all content on the video's canplay — but that blanks the page
@@ -140,20 +141,34 @@ export default function Home() {
         muted
         loop
         playsInline
-        onCanPlay={() => setReady(true)}
+        onCanPlay={() => {
+          setVideoOk(true);
+          setReady(true);
+        }}
         onError={() => setReady(true)}
       />
 
-      {/* Designed background + readability scrim (visible through / without the video). */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#07131a] via-[#0b2530]/85 to-ink/95" />
+      {/* Scrim adapts: light overlay when the video plays (keeps footage visible,
+          text readable); full designed gradient when there is no video. */}
       <div
-        className="pointer-events-none absolute -left-40 top-[-20%] z-0 h-[70vh] w-[70vh] rounded-full opacity-25 blur-3xl"
-        style={{ background: 'radial-gradient(circle, #ffda00 0%, transparent 65%)' }}
+        className={`absolute inset-0 z-0 transition-opacity duration-700 ${
+          videoOk
+            ? 'bg-gradient-to-br from-[#07131a]/85 via-[#0b2530]/50 to-ink/70'
+            : 'bg-gradient-to-br from-[#07131a] via-[#0b2530]/85 to-ink/95'
+        }`}
       />
-      <div
-        className="pointer-events-none absolute bottom-[-30%] right-[-10%] z-0 h-[80vh] w-[80vh] rounded-full opacity-20 blur-3xl"
-        style={{ background: 'radial-gradient(circle, #0e6079 0%, transparent 60%)' }}
-      />
+      {!videoOk && (
+        <>
+          <div
+            className="pointer-events-none absolute -left-40 top-[-20%] z-0 h-[70vh] w-[70vh] rounded-full opacity-25 blur-3xl"
+            style={{ background: 'radial-gradient(circle, #ffda00 0%, transparent 65%)' }}
+          />
+          <div
+            className="pointer-events-none absolute bottom-[-30%] right-[-10%] z-0 h-[80vh] w-[80vh] rounded-full opacity-20 blur-3xl"
+            style={{ background: 'radial-gradient(circle, #0e6079 0%, transparent 60%)' }}
+          />
+        </>
+      )}
 
       <AnimatePresence>
         {ready && (
