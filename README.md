@@ -20,7 +20,7 @@ npm run setup      # installs server + client dependencies
 npm run dev        # server on :5000, client on :5173
 ```
 
-Open http://localhost:5173. The SQLite database is created and seeded automatically on first server start.
+Open https://rentigo-70dm.onrender.com/. The SQLite database is created and seeded automatically on first server start.
 
 **Production build:** `npm run build` then `npm start` — Express serves the built client from `client/dist` on :5000.
 
