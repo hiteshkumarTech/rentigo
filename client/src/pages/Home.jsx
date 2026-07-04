@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'motion/react';
-import { ArrowRight, Car, ChevronDown, Menu, X } from 'lucide-react';
+import { ArrowRight, Car, ChevronDown, Github, Linkedin, Menu, X } from 'lucide-react';
 import { useAuth } from '../context/AuthContext.jsx';
 import { EXPO_OUT, todayISO } from '../lib/format.js';
 import PillButton from '../components/PillButton.jsx';
@@ -275,39 +275,71 @@ export default function Home() {
 
             {/* ------------------------------ footer ------------------------------ */}
             <footer
-              className="relative z-10 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between"
+              className="relative z-10 flex flex-col gap-6"
               style={{ padding: 'clamp(12px, 3vh, 32px) clamp(16px, 3vw, 48px) clamp(16px, 5vh, 66px)' }}
             >
-              <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.45, duration: 0.65, ease: EXPO_OUT }}
-                className="flex items-end gap-4"
-              >
-                <div
-                  className="font-display uppercase text-brand"
-                  style={{ fontSize: 'clamp(52px, min(8vh, 6vw), 98px)', lineHeight: 0.85 }}
+              <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+                <motion.div
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.45, duration: 0.65, ease: EXPO_OUT }}
+                  className="flex items-end gap-4"
                 >
-                  1M+
-                </div>
-                <div className="flex items-center gap-3 pb-1">
-                  <p className="text-white" style={{ fontSize: 'clamp(16px, min(1.6vh, 1.2vw), 20px)', lineHeight: 1.25 }}>
-                    kilometres driven
-                    <br />
-                    by RentiGo riders —
-                    <br />
-                    zero double-bookings
-                  </p>
                   <div
-                    className="flex items-center justify-center rounded-full bg-white"
-                    style={{ width: 'clamp(40px, min(5.5vh, 4vw), 67px)', aspectRatio: '1' }}
+                    className="font-display uppercase text-brand"
+                    style={{ fontSize: 'clamp(52px, min(8vh, 6vw), 98px)', lineHeight: 0.85 }}
                   >
-                    <Car className="text-ink" size={22} />
+                    1M+
                   </div>
+                  <div className="flex items-center gap-3 pb-1">
+                    <p className="text-white" style={{ fontSize: 'clamp(16px, min(1.6vh, 1.2vw), 20px)', lineHeight: 1.25 }}>
+                      kilometres driven
+                      <br />
+                      by RentiGo riders —
+                      <br />
+                      zero double-bookings
+                    </p>
+                    <div
+                      className="flex items-center justify-center rounded-full bg-white"
+                      style={{ width: 'clamp(40px, min(5.5vh, 4vw), 67px)', aspectRatio: '1' }}
+                    >
+                      <Car className="text-ink" size={22} />
+                    </div>
+                  </div>
+                </motion.div>
+
+                <PillButton label="Get riding" onClick={() => navigate('/fleet')} />
+              </div>
+
+              {/* Author credit */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.1, duration: 0.6 }}
+                className="flex flex-col items-center gap-3 border-t border-white/10 pt-5 sm:flex-row sm:justify-between"
+              >
+                <p className="text-xs text-white/40">
+                  Designed &amp; built by <span className="font-medium text-white/70">Hitesh Kumar</span>
+                </p>
+                <div className="flex items-center gap-5">
+                  <a
+                    href="https://github.com/hiteshkumarTech/rentigo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 text-xs text-white/40 transition hover:text-brand"
+                  >
+                    <Github size={15} /> Source code
+                  </a>
+                  <a
+                    href="https://linkedin.com/in/hitesh-kumar-Ob7702416"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 text-xs text-white/40 transition hover:text-brand"
+                  >
+                    <Linkedin size={15} /> LinkedIn
+                  </a>
                 </div>
               </motion.div>
-
-              <PillButton label="Get riding" onClick={() => navigate('/fleet')} />
             </footer>
           </motion.div>
         )}
