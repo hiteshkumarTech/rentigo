@@ -21,7 +21,8 @@ npm run dev        # server on :5000, client on :5173
 ```
 
 Open https://rentigo-70dm.onrender.com/. The SQLite database is created and seeded automatically on first server start.
-![Uploading ezgif-828a16de3489f1e2.gif…]()
+<img width="800" height="450" alt="ezgif-828a16de3489f1e2" src="https://github.com/user-attachments/assets/a7cc3074-2c2b-4936-a5cf-0e9671ffee20" />
+
 
 
 **Production build:** `npm run build` then `npm start` — Express serves the built client from `client/dist` on :5000.
